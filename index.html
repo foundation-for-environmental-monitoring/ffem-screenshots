@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ffem Screenshots</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            overscroll-behavior-x: none;
+            font-size: 100%;
+            background-color: #002b36;
+            color: #888;
+            font-family: "PT Sans", sans-serif;
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            padding: .1em;
+            vertical-align: top
+        }
+
+        .disable-select {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        span {
+            cursor: pointer;
+            padding-bottom: 8px;
+            padding-top: 8px;
+            padding-left: 4px;
+            color: #e6e4e4;
+            text-decoration: none;
+            display: block
+        }
+
+        span:hover {
+            cursor: pointer;
+            color: #eee;
+            background: #015505
+        }
+
+        .nav {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: green;
+            border-radius: 3px;
+            width: 280px;
+            margin: 0 auto;
+            height: 43px
+        }
+
+        .nav li {
+            list-style: none
+        }
+
+        .nav>li {
+            padding: 0;
+            float: left;
+            position: relative
+        }
+
+        .nav>li>span {
+            cursor: pointer;
+            float: left;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            line-height: 43px;
+            padding: 0 15px;
+            border-right: 1px solid #777;
+            border-left: 1px solid #555;
+            height: 43px
+        }
+
+        .nav>li:first-child>span {
+            border-left: 0
+        }
+
+        .nav>li:last-child>span {
+            border-right: 0
+        }
+
+        .nav>li:hover>div {
+            display: block;
+            background: #505050
+        }
+
+        .nav>li>div {
+            position: absolute;
+            left: 0;
+            top: 43px;
+            display: none;
+            background: #fff;
+            padding: 10px 10px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+            overflow: hidden
+        }
+
+        .container-1,
+        .container-2,
+        .container-3,
+        .container-4,
+        .container-5,
+        .container-6 {
+            font-size: 80%
+        }
+
+        .col1,
+        .col2,
+        .col3,
+        .col4,
+        .col5 {
+            margin: 10px 0;
+            float: left;
+            padding: 0 10px
+        }
+
+        .container-1 {
+            width: 170px
+        }
+
+        .container-1 .col1 {
+            width: 100%
+        }
+
+        .container-2 {
+            width: 400px
+        }
+
+        .container-2 .col1 {
+            width: 50%
+        }
+
+        .container-2 .col2 {
+            width: 100%
+        }
+
+        .container-3 {
+            width: 200px
+        }
+
+        .container-3 .col1 {
+            width: 33.33%
+        }
+
+        .container-3 .col2 {
+            width: 66.66%
+        }
+
+        .container-3 .col3 {
+            width: 100%
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden
+        }
+
+        .menu-top {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0
+        }
+
+        .button {
+            background: green;
+        }
+        .button>span{
+            text-align: center;
+            width:80px;
+        }
+    </style>
+    <script>
+        var currentIndex = 0;
+        var pageCountArray = [
+            ["ac33b44f9992", 11],
+            ["32d9b8f4aecf", 11],
+        ];
+
+        function nextPage() {
+            if (currentIndex < pageCountArray.length - 1) {
+                currentIndex++;
+                item = pageCountArray[currentIndex][0];
+                pageCount = pageCountArray[currentIndex][1];
+                addTags(item, pageCount)
+            }
+        }
+
+        function prevPage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                item = pageCountArray[currentIndex][0];
+                pageCount = pageCountArray[currentIndex][1];
+                addTags(item, pageCount)
+            }
+        }
+
+        function addTags(item, pageCount) {
+
+            var htmlEn = '';
+            var htmlHi = '';
+            var htmlKn = '';
+            var htmlTe = '';
+
+            for (var index = 0; index < pageCount; index++) {
+                htmlEn += '<img src="english/' + item + '-en-' + index.toString().padStart(2, '0') + '.png">';
+                htmlHi += '<img src="hindi/' + item + '-hi-' + index.toString().padStart(2, '0') + '.png">';
+                htmlKn += '<img src="kannada/' + item + '-kn-' + index.toString().padStart(2, '0') + '.png">';
+                htmlTe += '<img src="telugu/' + item + '-te-' + index.toString().padStart(2, '0') + '.png">';
+            }
+
+            document.getElementById("screenshots-en").innerHTML = htmlEn;
+            document.getElementById("screenshots-hi").innerHTML = htmlHi;
+            document.getElementById("screenshots-kn").innerHTML = htmlKn;
+            document.getElementById("screenshots-te").innerHTML = htmlTe;
+
+            document.getElementById("screenshots-en").style.width = (pageCount * 256) + "px"
+            document.getElementById("screenshots-hi").style.width = (pageCount * 256) + "px"
+            document.getElementById("screenshots-kn").style.width = (pageCount * 256) + "px"
+            document.getElementById("screenshots-te").style.width = (pageCount * 256) + "px"
+
+            window.history.replaceState('', item, '?id=' + item);
+
+            // window.scrollTo(0, 0);
+        }
+
+        function loadTestType(item) {
+
+            var pageCount = 0;
+            for (var index = 0; index < pageCountArray.length; index++) {
+                var element = pageCountArray[index];
+                if (element[0] == item) {
+                    currentIndex = index;
+                    pageCount = element[1];
+                    break;
+                }
+            }
+
+            addTags(item, pageCount);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="menu-top">
+        <div id="menu-wrapper">
+            <ul class="nav">
+                <li><span>Striptest</span>
+                    <div class="container-3">
+                        <div class="col">
+                            <ul>
+                                <li><span onclick="loadTestType('ac33b44f9992')">Water - Arsenic (0 - 4000)</span></li>
+                                <li><span onclick="loadTestType('32d9b8f4aecf')">Water - Arsenic (0 - 500)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="button">
+                    <span onclick="prevPage()">Prev</span>
+                </li>
+                <li class="button">
+                    <span onclick="nextPage()">Next</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="screenshots-en" class="page section1"></div>
+    <div id="screenshots-hi" class="page"></div>
+    <div id="screenshots-kn" class="page"></div>
+    <div id="screenshots-te" class="page"></div>
+</body>
+<script>
+    var searchParams = new URLSearchParams(window.location.search);
+    var id = searchParams.get("id");
+    if (!id) {
+        id = 'ac33b44f9992';
+    }
+    loadTestType(id);
+</script>
+
+</html>
