@@ -65,7 +65,7 @@
             user-select: none;
             background: green;
             border-radius: 3px;
-            width: 280px;
+            width: 380px;
             margin: 0 auto;
             height: 43px
         }
@@ -191,14 +191,21 @@
         .button {
             background: green;
         }
-        .button>span{
+
+        .button>span {
             text-align: center;
-            width:80px;
+            width: 80px;
+        }
+
+        .page{
+            margin-bottom: 10px;
         }
     </style>
     <script>
         var currentIndex = 0;
         var pageCountArray = [
+            ["ad0d47bcc96b", 9],
+            ["b6cb9742737a", 7],
             ["ac33b44f9992", 11],
             ["32d9b8f4aecf", 11],
         ];
@@ -271,6 +278,16 @@
     <div class="menu-top">
         <div id="menu-wrapper">
             <ul class="nav">
+                <li><span>Lite</span>
+                    <div class="container-3">
+                        <div class="col">
+                            <ul>
+                                <li><span onclick="loadTestType('ad0d47bcc96b')">Residual Chlorine</span></li>
+                                <li><span onclick="loadTestType('b6cb9742737a')">Fluoride - High Range</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
                 <li><span>Striptest</span>
                     <div class="container-3">
                         <div class="col">
@@ -299,7 +316,7 @@
     var searchParams = new URLSearchParams(window.location.search);
     var id = searchParams.get("id");
     if (!id) {
-        id = 'ac33b44f9992';
+        id = 'ad0d47bcc96b';
     }
     loadTestType(id);
 </script>
