@@ -2,7 +2,7 @@
 
 **Browse**
 
-https://foundation-for-environmental-monitoring.github.io/ffem-screenshots
+https://foundation-for-environmental-monitoring.github.io/ffem-screenshots/
 
 
 **Projects**
