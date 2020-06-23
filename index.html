@@ -65,7 +65,7 @@
             user-select: none;
             background: green;
             border-radius: 3px;
-            width: 480px;
+            width: 580px;
             margin: 0 auto;
             height: 43px
         }
@@ -197,8 +197,14 @@
             width: 80px;
         }
 
-        .page{
+        .page {
             margin-bottom: 10px;
+        }
+
+        .disabled {
+            pointer-events: none;
+            background: darkgray;
+            color: #ccc !important;
         }
     </style>
     <script>
@@ -211,6 +217,8 @@
             ["867d031b7712", 6],
             ["ac33b44f9992", 11],
             ["32d9b8f4aecf", 11],
+            ["concept", 12],
+            ["concept-dilution", 13]
         ];
 
         function nextPage() {
@@ -240,9 +248,11 @@
 
             for (var index = 0; index < pageCount; index++) {
                 htmlEn += '<img src="english/' + item + '-en-' + index.toString().padStart(2, '0') + '.png">';
-                htmlHi += '<img src="hindi/' + item + '-hi-' + index.toString().padStart(2, '0') + '.png">';
-                htmlKn += '<img src="kannada/' + item + '-kn-' + index.toString().padStart(2, '0') + '.png">';
-                htmlTe += '<img src="telugu/' + item + '-te-' + index.toString().padStart(2, '0') + '.png">';
+                if (!item.startsWith('concept')) {
+                    htmlHi += '<img src="hindi/' + item + '-hi-' + index.toString().padStart(2, '0') + '.png">';
+                    htmlKn += '<img src="kannada/' + item + '-kn-' + index.toString().padStart(2, '0') + '.png">';
+                    htmlTe += '<img src="telugu/' + item + '-te-' + index.toString().padStart(2, '0') + '.png">';
+                }
             }
 
             document.getElementById("screenshots-en").innerHTML = htmlEn;
@@ -256,6 +266,18 @@
             document.getElementById("screenshots-te").style.width = (pageCount * 256) + "px"
 
             window.history.replaceState('', item, '?id=' + item);
+
+            if (currentIndex == pageCountArray.length - 1) {
+                document.getElementById('nextButton').setAttribute('class', 'disabled')
+            } else {
+                document.getElementById('nextButton').removeAttribute('class')
+            }
+
+            if (currentIndex == 0) {
+                document.getElementById('backButton').setAttribute('class', 'disabled')
+            } else {
+                document.getElementById('backButton').removeAttribute('class')
+            }
 
             // window.scrollTo(0, 0);
         }
@@ -274,6 +296,7 @@
 
             addTags(item, pageCount);
         }
+
     </script>
 </head>
 
@@ -320,11 +343,22 @@
                         </div>
                     </div>
                 </li>
-                <li class="button">
-                    <span onclick="prevPage()">Prev</span>
+                <li><span>Concept</span>
+                    <div class="container-3">
+                        <div class="col">
+                            <ul>
+                                <li><span onclick="loadTestType('concept')">Instructions</span></li>
+                                <li><span onclick="loadTestType('concept-dilution')">Instructions with Dilution</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
                 <li class="button">
-                    <span onclick="nextPage()">Next</span>
+                    <span id="backButton" onclick="prevPage()">Prev</span>
+                </li>
+                <li class="button">
+                    <span id="nextButton" onclick="nextPage()">Next</span>
                 </li>
             </ul>
         </div>
