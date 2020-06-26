@@ -182,7 +182,6 @@
         }
 
         .menu-top {
-            position: fixed;
             left: 0;
             right: 0;
             top: 0
@@ -212,6 +211,7 @@
         var pageCountArray = [
             ["ad0d47bcc96b", 9],
             ["b6cb9742737a", 7],
+            ["calibration", 6],
             ["bcc31c3006cf", 15],
             ["ed2904f7972a", 6],
             ["867d031b7712", 6],
@@ -248,7 +248,7 @@
 
             for (var index = 0; index < pageCount; index++) {
                 htmlEn += '<img src="english/' + item + '-en-' + index.toString().padStart(2, '0') + '.png">';
-                if (!item.startsWith('concept')) {
+                if (!item.startsWith('concept') && !item.startsWith('calibration')) {
                     htmlHi += '<img src="hindi/' + item + '-hi-' + index.toString().padStart(2, '0') + '.png">';
                     htmlKn += '<img src="kannada/' + item + '-kn-' + index.toString().padStart(2, '0') + '.png">';
                     htmlTe += '<img src="telugu/' + item + '-te-' + index.toString().padStart(2, '0') + '.png">';
@@ -310,6 +310,7 @@
                             <ul>
                                 <li><span onclick="loadTestType('ad0d47bcc96b')">Residual Chlorine</span></li>
                                 <li><span onclick="loadTestType('b6cb9742737a')">Fluoride - High Range</span></li>
+                                <li><span onclick="loadTestType('calibration')">Calibration</span></li>
                             </ul>
                         </div>
                     </div>
