@@ -65,7 +65,7 @@
             user-select: none;
             background: green;
             border-radius: 3px;
-            width: 580px;
+            width: 680px;
             margin: 0 auto;
             height: 43px
         }
@@ -205,10 +205,12 @@
             background: darkgray;
             color: #ccc !important;
         }
+
     </style>
     <script>
         var currentIndex = 0;
         var pageCountArray = [
+            ["report", 17],
             ["ad0d47bcc96b", 9],
             ["b6cb9742737a", 7],
             ["calibration", 6],
@@ -248,7 +250,7 @@
 
             for (var index = 0; index < pageCount; index++) {
                 htmlEn += '<img src="english/' + item + '-en-' + index.toString().padStart(2, '0') + '.png">';
-                if (!item.startsWith('concept') && !item.startsWith('calibration')) {
+                if (!item.startsWith('report') && !item.startsWith('concept') && !item.startsWith('calibration')) {
                     htmlHi += '<img src="hindi/' + item + '-hi-' + index.toString().padStart(2, '0') + '.png">';
                     htmlKn += '<img src="kannada/' + item + '-kn-' + index.toString().padStart(2, '0') + '.png">';
                     htmlTe += '<img src="telugu/' + item + '-te-' + index.toString().padStart(2, '0') + '.png">';
@@ -260,7 +262,7 @@
             document.getElementById("screenshots-kn").innerHTML = htmlKn;
             document.getElementById("screenshots-te").innerHTML = htmlTe;
 
-            document.getElementById("screenshots-en").style.width = (pageCount * 256) + "px"
+            document.getElementById("screenshots-en").style.width = (pageCount * 280) + "px"
             document.getElementById("screenshots-hi").style.width = (pageCount * 256) + "px"
             document.getElementById("screenshots-kn").style.width = (pageCount * 256) + "px"
             document.getElementById("screenshots-te").style.width = (pageCount * 256) + "px"
@@ -279,6 +281,11 @@
                 document.getElementById('backButton').removeAttribute('class')
             }
 
+            if (item.startsWith('report')) {
+                document.getElementById('report').style.setProperty('display', 'block')
+            } else {
+                document.getElementById('report').style.setProperty('display', 'none')
+            }
             // window.scrollTo(0, 0);
         }
 
@@ -304,6 +311,15 @@
     <div class="menu-top">
         <div id="menu-wrapper">
             <ul class="nav">
+                <li><span>Report</span>
+                    <div class="container-3">
+                        <div class="col">
+                            <ul>
+                                <li><span onclick="loadTestType('report')">Report</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
                 <li><span>Lite</span>
                     <div class="container-3">
                         <div class="col">
@@ -365,15 +381,17 @@
         </div>
     </div>
     <div id="screenshots-en" class="page section1"></div>
+    <img id="report" style="display:none;margin-top:-250px;" src="english/report-en-17.png">
     <div id="screenshots-hi" class="page"></div>
     <div id="screenshots-kn" class="page"></div>
     <div id="screenshots-te" class="page"></div>
+    
 </body>
 <script>
     var searchParams = new URLSearchParams(window.location.search);
     var id = searchParams.get("id");
     if (!id) {
-        id = 'ad0d47bcc96b';
+        id = 'report';
     }
     loadTestType(id);
 </script>
