@@ -210,7 +210,7 @@
     <script>
         var currentIndex = 0;
         var pageCountArray = [
-            ["report", 19],
+            ["report", 18],
             ["ad0d47bcc96b", 9],
             ["b6cb9742737a", 7],
             ["calibration", 6],
@@ -282,10 +282,18 @@
             }
 
             if (item.startsWith('report')) {
-                document.getElementById('report').style.setProperty('display', 'block')
+                var y = document.getElementsByClassName('report')
+                for (i = 0; i < y.length; i++) {
+                    y[i].style.setProperty('display', 'block')
+                }
             } else {
-                document.getElementById('report').style.setProperty('display', 'none')
+                var y = document.getElementsByClassName('report')
+                for (i = 0; i < y.length; i++) {
+                    y[i].style.setProperty('display', 'none')
+                }
             }
+
+            
             // window.scrollTo(0, 0);
         }
 
@@ -381,7 +389,10 @@
         </div>
     </div>
     <div id="screenshots-en" class="page section1"></div>
-    <img id="report" style="display:none;margin-top:-250px;" src="english/report-en-18.png">
+    <div class="report" style="display:none;margin-top:-250px;" >
+        <img class="report" style="display:none;float:left;margin-right: 50px;" src="english/report-en-19.png">
+        <img class="report" style="display:none;" src="english/report-en-18.png">
+    </div>
     <div id="screenshots-hi" class="page"></div>
     <div id="screenshots-kn" class="page"></div>
     <div id="screenshots-te" class="page"></div>
